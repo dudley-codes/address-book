@@ -1,19 +1,23 @@
-using System;
 using System.Collections.Generic;
 
 namespace TryCatchExercise
 {
   public class AddressBook
   {
-    private List<Contact> _contacts = new List<Contact>();
+    public AddressBook()
+    {
+      contacts = new Dictionary<string, Contact>();
+    }
+    public Dictionary<string, Contact> contacts { get; set; }
+    // private List<Contact> _contacts = new List<Contact>();
     public void AddContact(Contact contact)
     {
-      _contacts.Add(contact);
+      contacts.Add(contact.Email, contact);
     }
 
     public Contact GetByEmail(string email)
     {
-      return _contacts[Email];
+      return contacts[email];
     }
   }
 
@@ -24,6 +28,12 @@ namespace TryCatchExercise
     public string Email { get; set; }
     public string Address { get; set; }
 
-    public string FullName { get; set; }
+    public string FullName
+    {
+      get
+      {
+        return $"{FirstName} {LastName}";
+      }
+    }
   }
 }

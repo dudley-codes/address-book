@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace TryCatchExercise
@@ -12,7 +13,14 @@ namespace TryCatchExercise
     // private List<Contact> _contacts = new List<Contact>();
     public void AddContact(Contact contact)
     {
-      contacts.Add(contact.Email, contact);
+      try
+      {
+        contacts.Add(contact.Email, contact);
+      }
+      catch (ArgumentException)
+      {
+        Console.WriteLine($"{contact.Email} already exists");
+      }
     }
 
     public Contact GetByEmail(string email)
